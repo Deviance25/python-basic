@@ -45,7 +45,8 @@ def filter_numbers(lst, type):
     elif type == "prime":
         return list(filter(is_prime, lst))
 
-print(filter_numbers([2, 3, 4, 5, 17, 15], ODD))
-print(filter_numbers([2, 3, 4, 5, 17, 15], EVEN))
-print(filter_numbers([1, 2, 3, 4, 5, 17, 15], PRIME))
+#test
+# print(filter_numbers([2, 3, 4, 5, 17, 15], ODD))
+# print(filter_numbers([2, 3, 4, 5, 17, 15], EVEN))
+# print(filter_numbers([1, 2, 3, 4, 5, 17, 15], PRIME))
 
