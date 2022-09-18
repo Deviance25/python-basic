@@ -25,11 +25,11 @@ def is_prime(n):
     if n > 1:
         for i in range(2, n):
             if n % i == 0:
-                return None
+                return False
         else:
-            return n
+            return True
     else:
-        return None
+        return False
 
 
 def filter_numbers(lst, type):
@@ -47,5 +47,5 @@ def filter_numbers(lst, type):
 
 print(filter_numbers([2, 3, 4, 5, 17, 15], ODD))
 print(filter_numbers([2, 3, 4, 5, 17, 15], EVEN))
-print(filter_numbers([2, 3, 4, 5, 17, 15], PRIME))
+print(filter_numbers([1, 2, 3, 4, 5, 17, 15], PRIME))
 
