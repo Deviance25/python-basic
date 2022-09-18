@@ -38,15 +38,16 @@ def filter_numbers(lst, type):
     и возвращает только чётные/нечётные/простые числа
     (выбор производится передачей дополнительного аргумента)
     """
-    if type == "even":
+    if type == EVEN:
         return list(filter(lambda x: x % 2 == 0, lst))
-    elif type == "odd":
+    elif type == ODD:
         return list(filter(lambda x: x % 2 != 0, lst))
-    elif type == "prime":
+    elif type == PRIME:
         return list(filter(is_prime, lst))
 
 #test
-# print(filter_numbers([2, 3, 4, 5, 17, 15], ODD))
-# print(filter_numbers([2, 3, 4, 5, 17, 15], EVEN))
-# print(filter_numbers([1, 2, 3, 4, 5, 17, 15], PRIME))
+# print(power_numbers(1, 2, 5, 7))
+# print(filter_numbers([2, 3, 4, 5, 17, 15, 16], ODD))
+# print(filter_numbers([2, 3, 4, 5, 17, 15, 16], EVEN))
+# print(filter_numbers([1, 2, 3, 4, 5, 17, 15, 16], PRIME))
 
