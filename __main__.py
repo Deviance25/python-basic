@@ -7,7 +7,6 @@ from homework_02.plane import Plane
 if __name__ == '__main__':
     print()
 
-
 # a = Vehicle(10, 200.0, 1.5)
 # #print(a.start())
 # # a.start()
@@ -21,5 +20,8 @@ if __name__ == '__main__':
 # c = Car(100, 200.0, 1.5)
 # print(c.set_engine("motor"))
 #
-# p = Plane(150)
-# print(p)
+# p = Plane(50, 200, 1.5, 150)
+# print(p.__dict__)
+# print(Plane.__dict__)
+
+#weight, fuel, fuel_consumption, max_cargo
