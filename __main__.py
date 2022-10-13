@@ -25,3 +25,4 @@ if __name__ == '__main__':
 # print(Plane.__dict__)
 
 #weight, fuel, fuel_consumption, max_cargo
+
