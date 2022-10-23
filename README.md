@@ -1,2 +1,2 @@
-Artemenko A.R.
-ETL/DWH Developer
+Artemenko A.R. \n
+etl/dwh developer
