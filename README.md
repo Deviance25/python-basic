@@ -1,2 +1,2 @@
 Artemenko A.R. "Information Technology Magnit"      
-etl/dwh developer
+etl / dwh developer
