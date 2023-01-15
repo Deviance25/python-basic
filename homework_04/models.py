@@ -74,7 +74,7 @@ class User(Base):
     email = Column(String(50), nullable=False, default="")
 
     # orm
-    posts = relationship('Post', back_populates='users', uselist=True)
+    posts = relationship('Post', back_populates='user', uselist=True)
 
     def __str__(self):
         return f"{self.__class__.__name__}(name={self.name!r}, username={self.name!r}, email={self.email})"
