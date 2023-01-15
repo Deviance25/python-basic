@@ -14,13 +14,30 @@
 """
 
 
+import asyncio
+from typing import List
+from jsonplaceholder_requests import USERS_DATA_URL, POSTS_DATA_URL, fetch_users_data, fetch_post_data
+from models import create_tables, get_and_save_users, get_and_save_posts, Session
+
+
 async def async_main():
-    pass
+    await create_tables()
+    async with Session() as session:
+        users_data: List[dict]
+        posts_data: List[dict]
+        users_data, posts_data = await asyncio.gather(fetch_users_data(USERS_DATA_URL),
+                                                      fetch_post_data(POSTS_DATA_URL))
+
+        await get_and_save_users(session=session, users_data=users_data)
+        await get_and_save_posts(session=session, posts_data=posts_data)
 
 
-def main():
-    pass
+async def main():
+    await async_main()
 
 
 if __name__ == "__main__":
-    main()
+    asyncio.run(main())
+
+
+
