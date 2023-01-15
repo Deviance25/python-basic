@@ -89,7 +89,7 @@ class Post(Base):
     body = Column(Text, nullable=False, default="")
 
     # orm
-    users = relationship('User', back_populates='posts', uselist=False)
+    user = relationship('User', back_populates='posts', uselist=False)
 
     def __str__(self):
         return f"{self.__class__.__name__}(user_id={self.user_id}, title={self.title!r}, body={self.body!r})"
