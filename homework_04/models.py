@@ -37,6 +37,7 @@ logging.basicConfig(format='%(asctime)s.%(msecs)03d %(message)s',
 logging.getLogger('asyncio').setLevel(logging.WARNING)
 logger = logging.getLogger(__name__)
 
+
 class Base:
     @declared_attr
     def __tablename__(cls):
@@ -70,8 +71,8 @@ async def create_tables():
 
 class User(Base):
     name = Column(String(30), nullable=False, default="")
-    username = Column(String(20), nullable=False, default="")
-    email = Column(String(50), nullable=False, default="")
+    username = Column(String(150), nullable=False, default="")
+    email = Column(String(150), nullable=False, default="")
 
     # orm
     posts = relationship('Post', back_populates='user', uselist=True)
