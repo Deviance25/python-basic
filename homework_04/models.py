@@ -70,6 +70,7 @@ async def create_tables():
 
 
 class User(Base):
+    id = Column(Integer, primary_key=True)
     name = Column(String(30), nullable=False, default="")
     username = Column(String(150), nullable=False, default="")
     email = Column(String(150), nullable=False, default="")
@@ -78,7 +79,7 @@ class User(Base):
     posts = relationship('Post', back_populates='user', uselist=True)
 
     def __str__(self):
-        return f"{self.__class__.__name__}(name={self.name!r}, username={self.name!r}, email={self.email})"
+        return f"{self.__class__.__name__}(id={self.id!r}, name={self.name!r}, username={self.name!r}, email={self.email})"
 
     def __repr__(self):
         return str(self)
@@ -86,6 +87,7 @@ class User(Base):
 
 class Post(Base):
     user_id = Column(Integer, ForeignKey("users.id"))
+    id = Column(Integer, primary_key=True)
     title = Column(String(200), nullable=False, default="")
     body = Column(Text, nullable=False, default="")
 
@@ -93,7 +95,7 @@ class Post(Base):
     user = relationship('User', back_populates='posts', uselist=False)
 
     def __str__(self):
-        return f"{self.__class__.__name__}(user_id={self.user_id}, title={self.title!r}, body={self.body!r})"
+        return f"{self.__class__.__name__}(user_id={self.user_id}, id={self.id}, title={self.title!r}, body={self.body!r})"
 
     def __repr__(self):
         return str(self)
@@ -102,7 +104,7 @@ class Post(Base):
 async def get_and_save_users(session: AsyncSession, users_data: list[dict]) -> list[User]:
     logger.info("create users has started")
     users = [
-        User(username=el["username"], name=el["name"], email=el["email"])
+        User(id=el["id"], username=el["username"], name=el["name"], email=el["email"])
         for el in users_data
     ]
     session.add_all(users)
@@ -114,7 +116,7 @@ async def get_and_save_users(session: AsyncSession, users_data: list[dict]) -> l
 async def get_and_save_posts(session: AsyncSession, posts_data: list[dict]) -> list[Post]:
     logger.info("create posts has started")
     posts = [
-        Post(user_id=el["userId"], title=el["title"], body=el["body"])
+        Post(user_id=el["userId"], id=el["id"], title=el["title"], body=el["body"])
         for el in posts_data
     ]
     session.add_all(posts)
