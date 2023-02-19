@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% from 'ships/macros/shipform.html' import shipform %}
+
+{% set createpath = url_for('ships_app.add') %}
+{% set iscreate = request.path == createpath %}
+{% if iscreate %}
+  {% set buttontext = 'Create' %}
+{% else %}
+  {% set buttontext = 'Update' %}
+{% endif %}
+
+{% block title %}
+  {% if iscreate %}
+    Add
+  {% else %}
+    Update {{ ship.id }}
+  {% endif %}
+  ship
+{% endblock %}
+
+{% block body %}
+  <div>
+    <div class="h3">{% if iscreate %}
+      Create a new ship
+    {% else %}
+      Update ship <code>{{ ship.name }}</code>
+    {% endif %}
+    </div>
+    {{ shipform(form, buttontext) }}
+  </div>
+
+{% endblock %}
