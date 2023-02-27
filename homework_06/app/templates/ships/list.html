@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Ships list
+{% endblock %}
+
+{% block body %}
+    <div class="h1 mb-2">Ships:</div>
+    {% if ships %}
+      <ul class="list-group">
+        {% for ship in ships %}
+          <li class="ship-list-item list-group-item">
+              <span class="green-text">Ship</span>
+              <a class="ship-item-link text-decoration-none"
+                 href="{{ url_for('ships_app.details', ship_id=ship.id) }}"
+              >{{ ship.name }}</a>
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <h2>There are no ships at all ((</h2>
+    {% endif %}
+
+{% endblock %}
+
